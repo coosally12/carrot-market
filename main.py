@@ -4,6 +4,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.staticfiles import StaticFiles
 from typing import Annotated
 import sqlite3
+import json
 
 con = sqlite3.connect("db.db", check_same_thread=False)
 cur = con.cursor()
@@ -48,16 +49,12 @@ async def create_item(
 
 @app.get("/items")
 async def get_items():
-    # 컬럼명도 같이 가져옴
     con.row_factory = sqlite3.Row
     cur = con.cursor()
-    rows = cur.execute(
-        f"""
-                SELECT * from items;
-                """
-    ).fetchall()
+    rows = cur.execute(f"SELECT * from items;").fetchall()
 
-    return JSONResponse(jsonable_encoder(dict(row) for row in rows))
+    # 'orjson' 대신 'json' 라이브러리의 json.dumps를 사용합니다.
+    return JSONResponse(content=json.dumps([dict(row) for row in rows]))
 
 
 @app.get("/images/{item_id}")
@@ -69,7 +66,7 @@ async def get_image(item_id):
                 SELECT image from items WHERE id={item_id}
                 """
     ).fetchone()[0]
-    return Response(content=bytes.fromhex(image_bytes))
+    return Response(content=bytes.fromhex(image_bytes), media_type="image/*")
 
 
 app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
