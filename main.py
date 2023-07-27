@@ -1,9 +1,9 @@
 from fastapi import FastAPI, UploadFile, Form, Response
 from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from fastapi.staticfiles import StaticFiles
 from typing import Annotated
 import sqlite3
-import json
 
 con = sqlite3.connect("db.db", check_same_thread=False)
 cur = con.cursor()
@@ -48,12 +48,16 @@ async def create_item(
 
 @app.get("/items")
 async def get_items():
+    # 컬럼명도 같이 가져옴
     con.row_factory = sqlite3.Row
     cur = con.cursor()
-    rows = cur.execute(f"SELECT * from items;").fetchall()
+    rows = cur.execute(
+        f"""
+                SELECT * from items;
+                """
+    ).fetchall()
 
-    # 'orjson' 대신 'json' 라이브러리의 json.dumps를 사용합니다.
-    return JSONResponse(content=json.dumps([dict(row) for row in rows]))
+    return JSONResponse(jsonable_encoder(dict(row) for row in rows))
 
 
 @app.get("/images/{item_id}")
@@ -69,8 +73,3 @@ async def get_image(item_id):
 
 
 app.mount("/", StaticFiles(directory="frontend", html=True), name="frontend")
-
-if __name__ == "__main__":
-    import uvicorn
-
-    uvicorn.run(app, host="0.0.0.0", port=8000)
