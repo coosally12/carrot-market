@@ -11,13 +11,11 @@ const handleSubmit = async (event) => {
     body: formData,
   });
   const data = await res.json();
+  const accessToken = data.access_token;
+  window.localStorage.setItem("token", accessToken);
+  alert("로그인되었습니다!");
 
-  if (res.status === 200) {
-    alert("로그인에 성공했습니다!!");
-    window.location.pathname = "/";
-  } else if (res.status === 401) {
-    alert("아이디 또는 패스워드가 틀렸습니다.");
-  }
+  window.location.pathname = "/";
 };
 
 form.addEventListener("submit", handleSubmit);
