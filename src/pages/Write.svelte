@@ -1,6 +1,6 @@
 <script>
   import { getDatabase, ref, push } from "firebase/database";
-  import { push } from "svelte-spa-router";
+  import Footer from "../components/Footer.svelte";
 
   let title;
   let price;
@@ -15,6 +15,8 @@
       description,
       place,
     });
+    alert("글쓰기가 완료되었습니다.");
+    window.location.hash = "/";
   }
 </script>
 
@@ -45,6 +47,19 @@
     <input type="text" id="place" name="place" bind:value={place} />
   </div>
   <div>
-    <button type="submit">글쓰기 완료!</button>
+    <button class="write-button" type="submit">글쓰기 완료!</button>
   </div>
 </form>
+
+<Footer location="write" />
+
+<style>
+  .write-button {
+    background-color: tomato;
+    margin: 10px;
+    border-radius: 10px;
+    padding: 5px 12px 5px 12px;
+    color: white;
+    cursor: pointer;
+  }
+</style>
