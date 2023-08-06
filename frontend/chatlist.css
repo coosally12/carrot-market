@@ -1,0 +1,139 @@
+/* 공통 요소 */
+div {
+  display: flex;
+}
+
+/* 헤더 영역 */
+/* 상태메시지 영역 */
+.info-bar {
+  display: flex;
+  justify-content: space-between;
+}
+.info-bar__time {
+  display: flex;
+  font-size: 13px;
+}
+.info-bar__icons img {
+  display: flex;
+  width: 18px;
+  height: 18px;
+  padding: 5px;
+}
+/* 채팅 바 영역 */
+.chat-bar {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ededef;
+}
+.chat-bar .chat-main {
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  align-items: center;
+}
+.chat-bar .chat-main__icons img {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+}
+
+/* 메인 영역 */
+.new-chat {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  padding: 20px;
+  border-bottom: 1px solid #ededef;
+}
+.new-chat:hover {
+  cursor: pointer;
+}
+.new-chat img {
+  display: flex;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
+.new-chat .user-name {
+  display: flex;
+  font-size: 15px;
+  font-weight: bold;
+  position: relative;
+  padding-left: 60px;
+}
+.new-chat .user-place {
+  display: flex;
+  font-size: 13px;
+  color: grey;
+  padding-left: 7px;
+}
+.new-chat .user-time {
+  display: flex;
+  font-size: 13px;
+  padding-left: 7px;
+  color: grey;
+}
+.new-chat .user-message {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  position: relative;
+  padding-left: 60px;
+  padding-top: 6px;
+}
+
+/* 푸터 영역 */
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  padding-bottom: 30px;
+  padding-top: 20px;
+  border-top: 1px solid #eaeaea;
+  background-color: white;
+}
+.footer-block {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.footer-icons {
+  font-size: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 0 10px;
+  cursor: pointer;
+}
+.footer-icons__img {
+  width: 30px;
+}
+
+.footer-icons__desc {
+  margin-top: 5px;
+  font-weight: bold;
+  transform: scale(0.8);
+}
+
+@keyframes icons-doong-doong {
+  0% {
+    transform: translateY(0px);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+.footer-icons__img {
+  width: 30px;
+}
+.footer-icons:hover .footer-icons__img {
+  animation: 2s icons-doong-doong;
+}
