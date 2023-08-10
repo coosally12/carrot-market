@@ -2,12 +2,15 @@ import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
 import { getStorage } from "firebase/storage";
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
 const firebaseConfig = {
+  apiKey: "AIzaSyC9WzFcUb8aDfLcvwi_3tPmpkCM6b_lcVk",
+  authDomain: "carrot-market-e03a8.firebaseapp.com",
   databaseURL:
-    "https://carrot-market-e03a8-default-rtdb.asia-southeast1.firebasedatabase.app/",
-  storageBucket: "gs://carrot-market-e03a8.appspot.com",
+    "https://carrot-market-e03a8-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "carrot-market-e03a8",
+  storageBucket: "carrot-market-e03a8.appspot.com",
+  messagingSenderId: "644020556899",
+  appId: "1:644020556899:web:f094802b35584dbde95456",
 };
 
 // Initialize Firebase
