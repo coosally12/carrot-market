@@ -22,49 +22,39 @@ div {
 /* 판매자 정보 영역 */
 .seller-info {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: column;
   border-bottom: 1px solid black;
 }
-.seller-info .seller-profile {
-  display: flex;
-  flex-direction: row;
-}
 .seller-info img {
   display: flex;
-}
-.seller-info .back-icon img {
-  display: flex;
   width: 28px;
-  height: 25px;
-  position: absolute;
+  height: 28px;
 }
-.seller-info .seller-name {
+
+.seller-profile .seller-name {
   display: flex;
-  position: relative;
   font-size: 20px;
   font-weight: bold;
-  padding-left: 40px;
 }
-.seller-info .seller-temp {
+.seller-profile .seller-temp {
   display: flex;
   padding: 0px 5px;
   border: 2px solid black;
   border-radius: 15px;
   font-weight: bold;
-  margin-left: 5px;
 }
-.seller-info .seller-response {
+.seller-profile .seller-response {
   display: flex;
   font-size: 10px;
   padding-left: 42px;
   padding-top: 3px;
   padding-bottom: 10px;
 }
-.seller-info .side-icons img {
+.seller-info .side-icons {
   display: flex;
-  width: 28px;
-  height: 25px;
+  justify-content: center;
+  gap: 20px;
 }
 
 /* 파는 상품 정보 */
@@ -145,20 +135,11 @@ footer {
   padding-top: 20px;
   border-top: 1px solid #eaeaea;
   background-color: white;
-}
-
-/* 푸터 영역 */
-#message-bar {
-  display: flex;
-  justify-content: space-around;
-}
-#message-bar .plus-icon {
-  display: flex;
-  width: 30px;
-  height: 30px;
-}
-#message-bar .write-chat input {
-  display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#message-bar .plus-icon {
+  width: 20px;
+  height: 20px;
 }
