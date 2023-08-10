@@ -1,6 +1,6 @@
 <script>
   import { getDatabase, ref, push } from "firebase/database";
-  import Footer from "../components/Footer.svelte";
+  import Nav from "../components/Nav.svelte";
 
   let title;
   let price;
@@ -51,7 +51,7 @@
   </div>
 </form>
 
-<Footer location="chat" />
+<Nav location="chat" />
 
 <style>
   .write-button {
